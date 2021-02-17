@@ -4,8 +4,7 @@ import InstallPage from './pages/InstallPage';
 import LoginPage from './pages/LoginPage';
 import WizardPage from './pages/WizardPage';
 import AdminContext from './adminContext';
-import Layout from './Layout';
-import Header from './components/Header';
+import BackgroundLayout from './layouts/BackgroundLayout';
 
 function App() {
   const [adminInfo, setAdminInfo] = useState({});
@@ -13,11 +12,11 @@ function App() {
   return (
     <AdminContext.Provider value={{ adminInfo, setAdminInfo }} >
       <Switch>
-        <Layout>
+        <BackgroundLayout>
           <Route exact path="/" component={InstallPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/wizard" component={WizardPage} />
-        </Layout>
+        </BackgroundLayout>
       </Switch>
     </AdminContext.Provider>
   );

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
+import styled from 'styled-components';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -10,11 +11,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const ProgressBarLayout = styled.div`
+    border-bottom: 1px solid lightgrey;
+`
+
 const ProgressBar = ({ activeStep, steps }) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <ProgressBarLayout className={classes.root}>
             <Stepper activeStep={activeStep} alternativeLabel>
                 {steps.map((label) => (
                     <Step key={label}>
@@ -22,7 +27,7 @@ const ProgressBar = ({ activeStep, steps }) => {
                     </Step>
                 ))}
             </Stepper>
-        </div>
+        </ProgressBarLayout>
     )
 }
 

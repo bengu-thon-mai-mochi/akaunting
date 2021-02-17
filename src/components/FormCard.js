@@ -3,17 +3,16 @@ import { useHistory } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import LanguageForm from './LanguageForm';
 import FormFooter from './FormFooter';
-import FormButton from './FormButton';
 import DatabaseForm from './DatabaseForm';
 import AdminForm from './AdminForm';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    background-color: white;
     display: flex;
     flex-direction: column;
-    place-items: center;
-    width: 300px;
+    background-color: white;
+    width: 350px;
+    border: 1px solid darkblue;
 `;
 
 const FormCard = ({ steps }) => {

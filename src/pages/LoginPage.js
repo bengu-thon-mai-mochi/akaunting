@@ -1,10 +1,12 @@
-import LoginForm from '../components/LoginForm'
+import LoginForm from '../components/LoginForm';
+import HeaderLayout from '../layouts/HeaderLayout';
 
 const LoginPage = () => {
     return (
-        <div className="App">
+        <HeaderLayout>
             <LoginForm />
-        </div>
+            <footer>Powered By Accounting Software</footer>
+        </HeaderLayout>
     );
 }
 

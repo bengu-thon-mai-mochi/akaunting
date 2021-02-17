@@ -1,13 +1,15 @@
 import FormCard from '../components/FormCard';
-import Header from '../components/Header';
+import HeaderLayout from '../layouts/HeaderLayout';
 
 const InstallPage = () => {
     const steps = ['Language', 'Database', 'Admin'];
 
     return (
-        <div className="App">
-            <FormCard steps={steps} />
-        </div>
+        <HeaderLayout>
+            < div className="App" >
+                <FormCard steps={steps} />
+            </div>
+        </HeaderLayout>
     );
 }
 
