@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import styled from 'styled-components';
-import { languagesArr } from '../helpers.js';
+import LanguageList from './LanguageList';
 import FormCardLayout from '../layouts/FormCardLayout';
 
 const ScrollableList = styled.div`
@@ -15,22 +15,6 @@ const ScrollableList = styled.div`
     overflow-y: scroll;
 `
 
-const SelectButton = styled.button`
-    & {
-        display: flex;
-        padding-left: 20px;
-        border: none;
-        margin: 0;
-        background: white;
-        box-shadow: none;
-    }
-    &:active, &:focus  {
-        border: none;
-        background: gray;
-        outline: 1px solid #fff;
-    }
-`
-
 const LanguageForm = ({ changeStep }) => {
     const { handleSubmit } = useForm();
 
@@ -40,10 +24,9 @@ const LanguageForm = ({ changeStep }) => {
         setSelectedLang(language)
     }
 
-    const listItem = languagesArr.map(lang => <SelectButton className={`${lang.language === selectedLang ? "active" : ""}`} type="button" onClick={() => handleClick(lang.language)}>{lang.language}</SelectButton>)
-
-    const onSubmit = (data) => {
-        //Send selected data to somewhere
+    const onSubmit = () => {
+        //Send selected selectedLang to somewhere
+        console.log(selectedLang)
         changeStep();
     }
 
@@ -51,7 +34,7 @@ const LanguageForm = ({ changeStep }) => {
         <FormCardLayout>
             <form id="submit-form" onSubmit={handleSubmit(onSubmit)}>
                 <ScrollableList>
-                    {listItem}
+                    <LanguageList handleClick={handleClick} selectedLang={selectedLang} />
                 </ScrollableList>
             </form>
         </FormCardLayout>

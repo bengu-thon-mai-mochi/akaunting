@@ -54,7 +54,7 @@ const WizardForm = () => {
             <ProgressBar activeStep={activeStep} steps={steps} />
 
             {activeStep === 0 && <>
-                <CompanyForm changeStep={onStepChange} />}
+                <CompanyForm changeStep={onStepChange} />
                 <CompanyFooter>
                     <SubmitButton text="Save" />
                     <SubmitButton text="Skip" />
@@ -62,7 +62,7 @@ const WizardForm = () => {
             </>}
 
             {activeStep === 1 && <>
-                <CurrencyForm changeStep={onStepChange} />}
+                <CurrencyForm changeStep={onStepChange} />
                 <CurrencyFooter>
                     <BrowseButton text="Previous" changeStep={onStepChange} />
                     <SubmitButton text="Next" />
@@ -70,7 +70,7 @@ const WizardForm = () => {
             </>}
 
             {activeStep === 2 && <>
-                <TaxDashboard changeStep={onStepChange} />}
+                <TaxDashboard changeStep={onStepChange} />
                 <CurrencyFooter>
                     <BrowseButton text="Previous" changeStep={onStepChange} />
                     <BrowseButton text="Next" changeStep={onStepChange} />
@@ -78,7 +78,7 @@ const WizardForm = () => {
             </>}
 
             {activeStep === 3 && <>
-                <AppStore changeStep={onStepChange} />}
+                <AppStore changeStep={onStepChange} />
                 <CurrencyFooter>
                     <BrowseButton text="Previous" changeStep={onStepChange} />
                     <button onClick={() => history.push('/dashboard')}>Go to dashboard</button>

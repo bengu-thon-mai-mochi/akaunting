@@ -24,25 +24,34 @@ const Input = styled.input`
     border-radius: 3px;
     height: 24px;
 `
+const DragDropFile = styled(Input)`
+    border-style: dotted;
+`
+
+const Textarea = styled(Input).attrs({
+    as: "textarea"
+})`
+    height: 54px;
+    max - width: 100 %;
+`;
 
 const Label = styled.label`
-    font-size: 12px;
-    font-weight: bold;
-    color: gray;
-    padding-bottom: 5px;
+font - size: 12px;
+font - weight: bold;
+color: gray;
+padding - bottom: 5px;
 `
 const CompanyForm = ({ changeStep }) => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
         // SAVE DATA
-        changeStep();
+        changeStep(data);
     };
 
     return (
         <FormCardLayout>
             <Form id="submit-form" onSubmit={handleSubmit(onSubmit)} >
-
                 <Label>API Key</Label>
                 <Input name="apiKey" ref={register} />
                 <p style={{ 'fontSize': '9px' }}>Click here to get your API key</p>
@@ -59,11 +68,11 @@ const CompanyForm = ({ changeStep }) => {
                 </InputGroup>
 
                 <Label>Adress</Label>
-                <Input name="address" ref={register} />
-
-                <Label>Logo</Label>
-                <Input name="logo" ref={register} />
-
+                <Textarea name="address" ref={register} />
+                <Pane>
+                    <Label>Logo</Label>
+                    <DragDropFile type="file" name="logo" ref={register} accept="image/*" />
+                </Pane>
             </Form>
         </FormCardLayout>
     );

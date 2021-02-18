@@ -23,4 +23,4 @@ const Label = styled.label`
     color: gray;
     padding-bottom: 5px;
 `
-export { Form, InputGroup, Input, Label }
+export { Form, InputGroup, Input, Label };

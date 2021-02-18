@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import FormCardLayout from '../layouts/FormCardLayout';
+import CurrencyTableHeader from './CurrencyTableHeader';
+import AddButton from './AddButton';
+import EditableRateInput from './EditableRateInput';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -7,63 +11,112 @@ const Form = styled.form`
     flex-direction:column;
 `
 
-const InputGroup = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`
-
-const Pane = styled.div`
+const List = styled.ul`
     display: flex;
     flex-direction: column;
-    width: 45%;
+    list-style-type: none;
+    width: 100%;
+    margin-bottom: 12px;
 `
 
 const Input = styled.input`
-    border: 1px solid lightgray;
-    border-radius: 3px;
-    height: 24px;
+    border: 1px solid gray;
 `
 
-const Label = styled.label`
-    font-size: 12px;
-    font-weight: bold;
-    color: gray;
-    padding-bottom: 5px;
-`
+const defaultContent = [
+    {
+        id: 1,
+        name: 'British Pound',
+        code: 'GBP',
+        rate: 1.6,
+        status: true,
+        actions: "..."
+    },
+    {
+        id: 2,
+        name: 'Euro',
+        code: 'EUR',
+        rate: 1.25,
+        status: true,
+        actions: "..."
+    },
+    {
+        id: 3,
+        name: 'Turkish Lira',
+        code: 'TRY',
+        rate: 0.8,
+        status: true,
+        actions: "..."
+    },
+    {
+        id: 4,
+        name: 'US Dollar',
+        code: 'USD',
+        rate: 1,
+        status: true,
+        actions: "..."
+    },
+]
+
 const CurrencyForm = ({ changeStep }) => {
-    const { register, handleSubmit } = useForm();
+    const { handleSubmit } = useForm();
 
-    const onSubmit = (data) => {
-        // SAVE DATA
-        console.log(data);
+    const [defaultValues, setDefaultValues] = useState(defaultContent);
+
+    const headings = ["NAME", "CODE", "RATE", "ENABLED", "ACTIONS"];
+
+    const onSubmit = () => {
+        // Save defaultValues;
         changeStep();
+    };
+
+    const isEditEnabled = (id) => {
+
+        const updatedStatus = defaultValues.map(data => {
+            if (data.id === id) {
+                return {
+                    ...data,
+                    status: !data.status
+                };
+            };
+            return data;
+        });
+
+        setDefaultValues(updatedStatus)
+    };
+
+    const rewriteRate = (id, updatedRate) => {
+        const updatedRateList = defaultValues.map(data => {
+            if (data.id === id) {
+                return {
+                    ...data,
+                    rate: updatedRate
+                }
+            }
+            return data;
+        });
+
+        setDefaultValues(updatedRateList);
     };
 
     return (
         <FormCardLayout>
             <Form id="submit-form" onSubmit={handleSubmit(onSubmit)} >
-                <Label>API Key</Label>
-                <Input name="apiKey" ref={register} />
-                <p style={{ 'fontSize': '9px' }}>Click here to get your API key</p>
-
-                <InputGroup>
-                    <Pane>
-                        <Label>Tax Number</Label>
-                        <Input name="taxNumber" ref={register} />
-                    </Pane>
-                    <Pane>
-                        <Label>Financial Year Start</Label>
-                        <Input name="financialYearStart" ref={register} />
-                    </Pane>
-                </InputGroup>
-
-                <Label>Adress</Label>
-                <Input name="address" ref={register} />
-
-                <Label>Logo</Label>
-                <Input name="logo" ref={register} />
-
+                <AddButton />
+                <CurrencyTableHeader headings={headings} />
+                <List>
+                    {defaultValues.map(data => {
+                        return (
+                            <li key={data.id}>
+                                <span>{data.name}</span>
+                                <span>{data.code}</span>
+                                <EditableRateInput id={data.id} rate={data.rate} status={data.status} rewriteRate={rewriteRate} />
+                                <span><Input type="checkbox" id="check" checked={data.status} onChange={() => isEditEnabled(data.id)} /></span>
+                                <span>{data.actions}</span>
+                            </li>
+                        )
+                    })}
+                </List>
             </Form>
         </FormCardLayout>
     );
