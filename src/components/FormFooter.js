@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterLayout = styled.div`
     border-top: 1px solid lightgrey;
-    padding-top: 4vh;
+    paddingTop: 4vh;
     padding-bottom: 2vh;
     padding-right: 2vh;
     display: flex;

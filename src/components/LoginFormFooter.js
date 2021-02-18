@@ -12,7 +12,7 @@ const LoginFormFooter = ({ text }) => {
         <FooterLayout>
             <div>
                 <input type="checkbox" id="remember" name="remember" />
-                <label for="remember">Remember Me</label>
+                <label htmlFor="remember">Remember Me</label>
             </div>
             <FormButton text={text} />
         </FooterLayout>

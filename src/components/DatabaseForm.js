@@ -7,7 +7,7 @@ const DatabaseForm = ({ changeStep }) => {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
+        //Save data
         changeStep();
     };
 
