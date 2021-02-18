@@ -19,8 +19,8 @@ I used UI libraries where necessary.
 
 ## Future Developments
 
-Due to time limit, I couldn't work on customising and making the exact styling given. Such as, inputs, buttons and drop files could have been done a lot better. Hence, I like to more in that aspect. For this task, I prioritised the UX and making the functionalities work.
+Due to time limit, I couldn't work on customising and making the exact styling given. Such as, inputs, buttons and drop files could have been done a lot better. Hence, I would like to work more in that aspect. I also would like to make correct verifications for forms. But, for this task, I prioritised the UX and making the functionalities work.
 
 I also didn't have to clean up code and make it more reusable. There are so many parts that can be seperated into its own component. 
 
-Furthermore, of course I'd like to do it more-responsive.
+Furthermore, of course I'd like to do it more responsive.
