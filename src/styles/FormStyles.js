@@ -11,7 +11,9 @@ const InputGroup = styled.div`
 `
 
 const Input = styled.input`
-    border: 1px solid lightgray;
+    border-color: ${props => props.color || "lightgray"};
+    border-style: solid;
+    border-width: 1px;
     border-radius: 3px;
     height: 24px;
     margin-bottom: 15px;

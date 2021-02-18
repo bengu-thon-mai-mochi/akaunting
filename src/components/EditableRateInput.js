@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import styled from 'styled-components';
 
 const Input = styled.input`
-    border: 1px solid red;
+    width: 80%;
+    border: 1px solid lightgray;
 `
 
 const EditableRateInput = ({ id, rate, status, rewriteRate }) => {

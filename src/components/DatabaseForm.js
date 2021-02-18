@@ -15,23 +15,20 @@ const DatabaseForm = ({ changeStep }) => {
         <FormCardLayout>
             <Form id="submit-form" onSubmit={handleSubmit(onSubmit)} >
                 <InputGroup>
-                    <Label>Hostname</Label>
-                    <Input name="hostRequired" ref={register({ required: true })} />
-                    {errors.hostRequired && <span>*</span>}
+                    <Label>Hostname <span>*</span></Label>
+                    <Input name="hostRequired" ref={register({ required: true })} color={errors.hostRequired ? "red" : ''} />
                 </InputGroup>
                 <InputGroup>
-                    <Label>Username</Label>
-                    <Input name="userRequired" ref={register({ required: true })} />
-                    {errors.userRequired && <span>*</span>}
+                    <Label>Username <span>*</span></Label>
+                    <Input name="userRequired" ref={register({ required: true })} color={errors.userRequired ? "red" : ''} />
                 </InputGroup>
                 <InputGroup>
                     <Label>Password</Label>
                     <Input name="pass" ref={register} />
                 </InputGroup>
                 <InputGroup>
-                    <Label>Database</Label>
-                    <Input name="dataRequired" ref={register({ required: true })} />
-                    {errors.dataRequired && <span>*</span>}
+                    <Label>Database <span>*</span></Label>
+                    <Input name="dataRequired" ref={register({ required: true })} color={errors.dataRequired ? "red" : ''} />
                 </InputGroup>
             </Form>
         </FormCardLayout>

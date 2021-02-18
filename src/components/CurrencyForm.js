@@ -23,6 +23,16 @@ const Input = styled.input`
     border: 1px solid gray;
 `
 
+const ListItem = styled.li`
+    display: flex;
+    justify-content: space-around;
+`
+
+const Cell = styled.span`
+    display: flex;
+    width: 100%;
+`
+
 const defaultContent = [
     {
         id: 1,
@@ -107,13 +117,15 @@ const CurrencyForm = ({ changeStep }) => {
                 <List>
                     {defaultValues.map(data => {
                         return (
-                            <li key={data.id}>
-                                <span>{data.name}</span>
-                                <span>{data.code}</span>
-                                <EditableRateInput id={data.id} rate={data.rate} status={data.status} rewriteRate={rewriteRate} />
-                                <span><Input type="checkbox" id="check" checked={data.status} onChange={() => isEditEnabled(data.id)} /></span>
-                                <span>{data.actions}</span>
-                            </li>
+                            <ListItem key={data.id}>
+                                <Cell>{data.name}</Cell>
+                                <Cell>{data.code}</Cell>
+                                <Cell>
+                                    <EditableRateInput id={data.id} rate={data.rate} status={data.status} rewriteRate={rewriteRate} />
+                                </Cell>
+                                <Cell><Input type="checkbox" id="check" checked={data.status} onChange={() => isEditEnabled(data.id)} /></Cell>
+                                <Cell>{data.actions}</Cell>
+                            </ListItem>
                         )
                     })}
                 </List>

@@ -22,25 +22,20 @@ const AdminForm = ({ changeStep }) => {
         <FormCardLayout>
             <Form id="submit-form" onSubmit={handleSubmit(onSubmit)} >
                 <InputGroup>
-                    <Label>Company Name</Label>
-                    <Input name="companyNameRequired" ref={register({ required: true })} />
-                    {errors.companyNameRequired && <span>*</span>}
+                    <Label>Company Name <span>*</span> </Label>
+                    <Input name="companyNameRequired" ref={register({ required: true })} color={errors.companyNameRequired ? "red" : ''} />
                 </InputGroup>
                 <InputGroup>
-                    <Label>Company Email</Label>
-                    <Input name="emailRequired" ref={register({ required: true })} />
-                    {errors.emailRequired && <span>*</span>}
+                    <Label>Company Email <span>*</span></Label>
+                    <Input name="emailRequired" ref={register({ required: true })} color={errors.emailRequired ? "red" : ''} />
                 </InputGroup>
                 <InputGroup>
-                    <Label>Admin Email</Label>
-                    <Input name="adminEmailRequired" ref={register({ required: true })} />
-                    {errors.adminEmailRequired && <span>*</span>}
+                    <Label>Admin Email<span>*</span></Label>
+                    <Input name="adminEmailRequired" ref={register({ required: true })} color={errors.adminEmailRequired ? "red" : ''} />
                 </InputGroup>
-
                 <InputGroup>
-                    <Label>Admin Password</Label>
-                    <Input name="adminPasswordRequired" ref={register({ required: true })} />
-                    {errors.adminPasswordRequired && <span>*</span>}
+                    <Label>Admin Password<span>*</span></Label>
+                    <Input name="adminPasswordRequired" ref={register({ required: true })} color={errors.adminPasswordRequired ? "red" : ''} />
                 </InputGroup>
             </Form>
         </FormCardLayout>

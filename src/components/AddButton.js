@@ -8,15 +8,15 @@ const Label = styled.label`
     border: 1px solid grey;
     display: inlineBlock;
     padding: 6px 12px;
-    width: 10vh;
+    width: 8vh;
     cursor: pointer;
-    fontSize: 9px;
+    font-size: 0.75rem;
+    text-align: center;
 `
 const Wrapper = styled.div`
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 2vh;
-    padding-right: 2vh;
+    padding-bottom: 1vh;
 `
 
 const AddButton = () => {
