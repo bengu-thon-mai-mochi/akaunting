@@ -1,4 +1,4 @@
-import FormCard from '../components/FormCard';
+import InstallFormCard from '../components/InstallFormCard';
 import HeaderLayout from '../layouts/HeaderLayout';
 
 const InstallPage = () => {
@@ -7,7 +7,7 @@ const InstallPage = () => {
     return (
         <HeaderLayout>
             < div className="App" >
-                <FormCard steps={steps} />
+                <InstallFormCard steps={steps} />
             </div>
         </HeaderLayout>
     );

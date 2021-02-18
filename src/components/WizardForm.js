@@ -41,7 +41,7 @@ const WizardForm = () => {
 
     const steps = ["Company", "Currencies", "Taxes", "Finish"]
 
-    const changeStep = (text) => {
+    const onStepChange = (text) => {
         if (text === "Previous") {
             setActiveStep(activeStep - 1);
         } else {
@@ -53,29 +53,37 @@ const WizardForm = () => {
         <WizardFormWrapper>
             <ProgressBar activeStep={activeStep} steps={steps} />
 
-            {activeStep === 0 && <CompanyForm changeStep={changeStep} />}
-            {activeStep === 0 && <CompanyFooter>
-                <SubmitButton text="Save" />
-                <SubmitButton text="Skip" />
-            </CompanyFooter>}
+            {activeStep === 0 && <>
+                <CompanyForm changeStep={onStepChange} />}
+                <CompanyFooter>
+                    <SubmitButton text="Save" />
+                    <SubmitButton text="Skip" />
+                </CompanyFooter>
+            </>}
 
-            {activeStep === 1 && <CurrencyForm changeStep={changeStep} />}
-            {activeStep === 1 && <CurrencyFooter>
-                <BrowseButton text="Previous" changeStep={changeStep} />
-                <SubmitButton text="Next" />
-            </CurrencyFooter>}
+            {activeStep === 1 && <>
+                <CurrencyForm changeStep={onStepChange} />}
+                <CurrencyFooter>
+                    <BrowseButton text="Previous" changeStep={onStepChange} />
+                    <SubmitButton text="Next" />
+                </CurrencyFooter>
+            </>}
 
-            {activeStep === 2 && <TaxDashboard changeStep={changeStep} />}
-            {activeStep === 2 && <CurrencyFooter>
-                <BrowseButton text="Previous" changeStep={changeStep} />
-                <BrowseButton text="Next" changeStep={changeStep} />
-            </CurrencyFooter>}
+            {activeStep === 2 && <>
+                <TaxDashboard changeStep={onStepChange} />}
+                <CurrencyFooter>
+                    <BrowseButton text="Previous" changeStep={onStepChange} />
+                    <BrowseButton text="Next" changeStep={onStepChange} />
+                </CurrencyFooter>
+            </>}
 
-            {activeStep === 3 && <AppStore changeStep={changeStep} />}
-            {activeStep === 3 && <CurrencyFooter>
-                <BrowseButton text="Previous" changeStep={changeStep} />
-                <button onClick={() => history.push('/dashboard')}>Go to dashboard</button>
-            </CurrencyFooter>}
+            {activeStep === 3 && <>
+                <AppStore changeStep={onStepChange} />}
+                <CurrencyFooter>
+                    <BrowseButton text="Previous" changeStep={onStepChange} />
+                    <button onClick={() => history.push('/dashboard')}>Go to dashboard</button>
+                </CurrencyFooter>
+            </>}
 
         </WizardFormWrapper>
     )

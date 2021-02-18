@@ -15,12 +15,12 @@ const Wrapper = styled.div`
     border: 1px solid darkblue;
 `;
 
-const FormCard = ({ steps }) => {
+const InstallFormCard = ({ steps }) => {
     let history = useHistory();
 
     let [activeStep, setActiveStep] = useState(0);
 
-    const changeStep = () => {
+    const onStepChange = () => {
         if (activeStep === 2) {
             history.push('/login')
         } else {
@@ -31,12 +31,12 @@ const FormCard = ({ steps }) => {
     return (
         <Wrapper>
             <ProgressBar activeStep={activeStep} steps={steps} />
-            {activeStep === 0 && <LanguageForm changeStep={changeStep} />}
-            {activeStep === 1 && <DatabaseForm changeStep={changeStep} />}
-            {activeStep === 2 && <AdminForm changeStep={changeStep} />}
+            {activeStep === 0 && <LanguageForm changeStep={onStepChange} />}
+            {activeStep === 1 && <DatabaseForm changeStep={onStepChange} />}
+            {activeStep === 2 && <AdminForm changeStep={onStepChange} />}
             <FormFooter text="Next" />
         </Wrapper>
     )
 }
 
-export default FormCard;
+export default InstallFormCard;
